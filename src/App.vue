@@ -1,85 +1,113 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <h1>Time Manager</h1>
+    <User />
+    <nav>
+      <router-link to="/workingTimes/1">Heures de travail</router-link>
+      <router-link to="/workingTime/1">Gérer une plage</router-link>
+      <router-link to="/clock/1">Pointeuse</router-link>
+      <router-link to="/chartManager/1">Graphiques</router-link>
+    </nav>
+    <router-view />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script>
+import User from './components/User.vue'
+
+export default {
+  name: 'App',
+  components: {
+    User
+  }
+}
+</script>
+
+<style>
+:root {
+  --color-primary: #C9A876;
+  --color-primary-dark: #B08D5B;
+  --color-bg: #F5F0E6;
+  --color-surface: #EDE4D3;
+  --color-text: #4A3F35;
+  --color-border: #D6C9B3;
+  --color-error: #B5543A;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 2rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+h1, h2 {
+  color: var(--color-text);
+  font-weight: 600;
 }
 
-nav a.router-link-exact-active {
+input {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+input::placeholder {
+  color: var(--color-border);
+}
+
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+p {
   color: var(--color-text);
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+nav {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-border);
 }
 
 nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-nav a:first-of-type {
-  border: 0;
+nav a:hover {
+  background-color: var(--color-surface);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+nav a.router-link-active {
+  background-color: var(--color-primary);
 }
 </style>
