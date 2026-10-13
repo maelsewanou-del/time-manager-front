@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <h2>Gestion des heures de travail</h2>
 
     <input v-model="userID" placeholder="ID d'utilisateur" />

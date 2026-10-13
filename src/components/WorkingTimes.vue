@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card">
         <h2>Heures de travail</h2>
 
         <p>ID d'utilisateur : {{ userID }}</p>

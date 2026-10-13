@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <h2>Graphique des heures travaillées</h2>
     userId: <input v-model="userId" type="text" placeholder="Entrez l'ID de l'utilisateur" />
     <button @click="getChartData">Actualiser</button>
